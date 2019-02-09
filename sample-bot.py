@@ -44,6 +44,16 @@ def read_from_exchange(exchange):
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
+order_id = 1
+
+
+def trade(exchange, buysell, symbol, price, size):
+        trade = {'type': 'add', 'order_id': order_id, 'symbol': symbol,
+                 'dir': buysell, 'price': price, 'size': size}
+        order_id += 1
+        print(trade)
+        write_to_exchange(exchange, trade)
+
 def main():
     exchange = connect()
     write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
