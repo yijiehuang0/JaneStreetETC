@@ -74,6 +74,7 @@ def trade(exchange, buysell, symbol, price, size):
                  'dir': buysell, 'price': price, 'size': size}
         print(trade)
         write_to_exchange(exchange, trade)
+        time.sleep(0.01)
 
 def trade_batch(exchange, trades):
         # TODO check conflicts
