@@ -22,11 +22,13 @@ test_mode = False
 # 0 is prod-like
 # 1 is slower
 # 2 is empty
-test_exchange_index=2
+test_exchange_index=0
 prod_exchange_hostname="production"
 
 port=25000 + (test_exchange_index if test_mode else 0)
 exchange_hostname = "test-exch-" + team_name if test_mode else prod_exchange_hostname
+
+position = {}
 
 # ~~~~~============== NETWORKING CODE ==============~~~~~
 def connect():
@@ -78,6 +80,12 @@ def Bondtrade(exchange):
                 trades.append(('BUY', 'BOND', price, size))
     return trades
 
+# def createPosition(output):
+#     for symbol in output['symbols']:
+#         currentPosition[symbol['symbol']]= symbol['position']
+#         currentSellOrders[symbol['symbol']] = symbol['position']
+#         currentBuyOrders[symbol['symbol']] = symbol['position']
+
 
 def main():
 
@@ -87,11 +95,11 @@ def main():
 
     trades = []
 
-
     while data:
         trades.extend(Bondtrade(exchange))
         exchange.tradeMany(trades)
         data = exchange.read()
+        print(position)
 
         # A common mistake people make is to call write_to_exchange() > 1
     # time for every read_from_exchange() response.
