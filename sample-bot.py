@@ -28,6 +28,7 @@ prod_exchange_hostname="production"
 port=25000 + (test_exchange_index if test_mode else 0)
 exchange_hostname = "test-exch-" + team_name if test_mode else prod_exchange_hostname
 
+order_id = 1
 position = {"alex" : 1}
 last_data = None
 
@@ -64,7 +65,7 @@ def getData(exchange):
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
-order_id = 1
+
 
 
 def trade(exchange, buysell, symbol, price, size):
