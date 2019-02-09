@@ -41,18 +41,23 @@ def write_to_exchange(exchange, obj):
     json.dump(obj, exchange)
     exchange.write("\n")
 
-def read_from_exchange(e):
-    data = e.readline()
-    print("B")
-    if (data == ""):
-        print("a")
-        return None
-    else:
-        print("b")
-        data = json.loads(data)
-        last_data = data
-        return data
+def read_from_exchange(exchange):
+    data = json.loads(exchange.readline())
+    last_data = data
+    return data
 
+# def read_from_exchange(e):
+#     data = e.readline()
+#     print("B")
+#     if (data == ""):
+#         print("a")
+#         return None
+#     else:
+#         print("b")
+#         data = json.loads(data)
+#         last_data = data
+#         return data
+#
 def getData(exchange):
     return last_data
 
