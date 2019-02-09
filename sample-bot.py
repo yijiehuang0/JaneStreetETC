@@ -74,11 +74,11 @@ def trade(exchange, buysell, symbol, price, size):
         print(trade)
         write_to_exchange(exchange, trade)
 
-def trade_batch(trades):
+def trade_batch(exchange, trades):
         # TODO check conflicts
         for buysell, symbol, price, size in trades:
             if buysell and size != 0:
-                trade(buysell, symbol, price, size)
+                trade(exchange, buysell, symbol, price, size)
 
 def Bondtrade(exchange):
     data = read_from_exchange(exchange)
@@ -115,7 +115,7 @@ def main():
 
     while data:
         trades.extend(Bondtrade(exchange))
-        trade_batch(trades)
+        trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
         print(data)
 
