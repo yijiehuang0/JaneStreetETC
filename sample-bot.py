@@ -99,6 +99,7 @@ def Bondtrade(exchange):
 def updateValues(data, symb):
     buys = data['buy']
     sells = data['sell']
+    print("yes yes yes")
 
     if(len(buys) > 0):
         mean_buy = sum([int(price) for price, size in buys]) / len(buys)
