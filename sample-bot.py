@@ -66,7 +66,7 @@ def getData(exchange):
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
 
-fvList = {"BOND": [None,None], "VALBZ": [None,None], "GS": [None,None], "MS": [None,None], "WFC": [None,None], "XLF": [None,None]}
+fvList = {"BOND": [None,None], "VALE": [None,None] "VALBZ": [None,None], "GS": [None,None], "MS": [None,None], "WFC": [None,None], "XLF": [None,None]}
 
 def trade(exchange, buysell, symbol, price, size):
         # order_id = str(datetime.datetime.now()).split(" ")[1].replace(":","").split(".")[0]
@@ -118,7 +118,7 @@ def FairValuetrade(exchange):
     """Given the data in the book, decides whether we should make a trade.
     Returns a list of trades (buy/sell, symbol, price, size).
     """
-    data = exchange.read()
+    data = getData(exchange)
     trades = []
     if(data['type'] != 'book'):
         return trades
@@ -160,6 +160,7 @@ def main():
 
     while data:
         # trades.extend(Bondtrade(exchange))
+
         trades.extend(FairValuetrade(exchange))
         trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
