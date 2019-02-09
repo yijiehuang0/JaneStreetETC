@@ -105,6 +105,7 @@ def Bondtrade(exchange):
 def main():
     print(1)
     exchange = connect()
+    write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
     print(exchange)
     data = read_from_exchange(exchange)
     print(3)
