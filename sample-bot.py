@@ -28,7 +28,7 @@ prod_exchange_hostname="production"
 port=25000 + (test_exchange_index if test_mode else 0)
 exchange_hostname = "test-exch-" + team_name if test_mode else prod_exchange_hostname
 
-order_id = 1
+nonlocal order_id = 1
 position = {"alex" : 1}
 last_data = None
 
@@ -87,11 +87,13 @@ def Bondtrade(exchange):
         bids = data['buy']
         for price, size in bids:
             if price > 1000:
+                print("sell")
                 trades.append(('SELL', 'BOND', price, size))
 
         asks = data['sell']
         for price, size in asks:
             if price < 1000:
+                print("buy")
                 trades.append(('BUY', 'BOND', price, size))
     return trades
 
