@@ -131,8 +131,8 @@ def FairValuetrade(exchange):
         return trades
 
     fv = fvList[symb]
-    fv = sum(fv)/2
-    diff = fv / 200
+    fv = sum(fv)
+    diff = fv / len(fv)
 
     for entry in data['buy']:
         if(int(entry[0]) > fv + diff):
