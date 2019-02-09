@@ -12,6 +12,7 @@ import socket
 import json
 import datetime
 import time
+import random
 
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # replace REPLACEME with your team name!
@@ -68,8 +69,8 @@ def getData(exchange):
 
 
 def trade(exchange, buysell, symbol, price, size):
-        order_id = str(datetime.datetime.now()).split(" ")[1].replace(":","").split(".")[0]
-        trade = {'type': 'add', 'order_id': int(order_id), 'symbol': symbol,
+        # order_id = str(datetime.datetime.now()).split(" ")[1].replace(":","").split(".")[0]
+        trade = {'type': 'add', 'order_id': random.randint(1,100), 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
         print(trade)
         write_to_exchange(exchange, trade)
