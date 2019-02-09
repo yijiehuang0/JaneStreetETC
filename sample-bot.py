@@ -115,7 +115,7 @@ def main():
 
     while data:
         trades.extend(Bondtrade(exchange))
-        tradeMany(trades)
+        trade_batch(trades)
         data = read_from_exchange(exchange)
         print(data)
 
