@@ -49,7 +49,7 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(e):
     data = e.readline()
     print("B")
-    if (data == ""):
+    if (data == None):
         print("a")
         return None
     else:
@@ -81,7 +81,7 @@ def trade_batch(trades):
                 trade(buysell, symbol, price, size)
 
 def Bondtrade(exchange):
-    data = getData(exchange)
+    data = read_from_exchange(exchange)
     trades = []
     if data['type'] == 'book' and data['symbol'] == 'BOND':
         bids = data['buy']
