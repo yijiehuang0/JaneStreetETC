@@ -59,8 +59,17 @@ def trade(exchange, buysell, symbol, price, size):
 
 def main():
 
-    
+
     exchange = connect()
+    data = read_from_exchange(exchange)
+
+    trades = []
+
+
+    while data:
+        trades.extend(strategy.trade(self.exchange))
+        self.exchange.trade_batch(trades)
+        data = self.exchange.read()
 
         # A common mistake people make is to call write_to_exchange() > 1
     # time for every read_from_exchange() response.
