@@ -10,6 +10,7 @@ from __future__ import print_function
 import sys
 import socket
 import json
+import time
 
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # replace REPLACEME with your team name!
@@ -66,10 +67,9 @@ def getData(exchange):
 
 
 def trade(exchange, buysell, symbol, price, size):
-        trade = {'type': 'add', 'order_id': order_id, 'symbol': symbol,
+        order_id = str(datetime.datetime.now()).split(" ")[1].replace(":","").split(".")[0]
+        trade = {'type': 'add', 'order_id': int(order_id), 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
-        nonlocal order_id
-        order_id += 1
         print(trade)
         write_to_exchange(exchange, trade)
 
