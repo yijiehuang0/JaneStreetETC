@@ -94,12 +94,13 @@ def main():
     data = read_from_exchange(exchange)
 
     trades = []
+    print(data)
 
     while data:
         trades.extend(Bondtrade(exchange))
         exchange.tradeMany(trades)
         data = exchange.read()
-        print(position)
+        print(data)
 
         # A common mistake people make is to call write_to_exchange() > 1
     # time for every read_from_exchange() response.
