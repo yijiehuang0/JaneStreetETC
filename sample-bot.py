@@ -118,7 +118,7 @@ def FairValuetrade(exchange):
     """Given the data in the book, decides whether we should make a trade.
     Returns a list of trades (buy/sell, symbol, price, size).
     """
-    data = getData(exchange)
+    data = read_from_exchange(exchange)
     trades = []
     if(data['type'] != 'book'):
         return trades
