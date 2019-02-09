@@ -45,7 +45,7 @@ def read_from_exchange(exchange):
     data = exchange.readLine()
     if (data == ""):
         return None
-    else
+    else:
         data = json.loads(data)
         last_data = data
         return data
