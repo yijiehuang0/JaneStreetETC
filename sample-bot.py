@@ -28,7 +28,7 @@ prod_exchange_hostname="production"
 port=25000 + (test_exchange_index if test_mode else 0)
 exchange_hostname = "test-exch-" + team_name if test_mode else prod_exchange_hostname
 
-position = {}
+position = {"alex" : 1}
 
 # ~~~~~============== NETWORKING CODE ==============~~~~~
 def connect():
