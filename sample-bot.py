@@ -44,8 +44,10 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(e):
     data = e.readline()
     if (data == ""):
+        print("a")
         return None
     else:
+        print("b")
         data = json.load(data)
         last_data = data
         return data
