@@ -84,19 +84,15 @@ def trade_batch(exchange, trades):
 def Bondtrade(exchange):
     data = read_from_exchange(exchange)
     trades = []
-    print(data)
     if data['type'] == 'book' and data['symbol'] == 'BOND':
-        print("success")
         bids = data['buy']
         for price, size in bids:
             if price > 1000:
-                print("sell")
                 trades.append(('SELL', 'BOND', price, size))
 
         asks = data['sell']
         for price, size in asks:
             if price < 1000:
-                print("bu")
                 trades.append(('BUY', 'BOND', price, size))
     return trades
 
