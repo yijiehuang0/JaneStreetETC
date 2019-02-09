@@ -49,12 +49,9 @@ def write_to_exchange(exchange, obj):
 
 def read_from_exchange(e):
     data = e.readline()
-    print("B")
     if (data == None):
-        print("a")
         return None
     else:
-        print("b")
         data = json.loads(data)
         last_data = data
         return data
@@ -104,21 +101,18 @@ def Bondtrade(exchange):
 
 
 def main():
-    print(1)
     exchange = connect()
     write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
-    print(exchange)
     data = read_from_exchange(exchange)
-    print(3)
 
     trades = []
-    print(data)
 
     while data:
         trades.extend(Bondtrade(exchange))
         trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
-        print(data)
+        # print(data)
+        print(trades)
 
         # A common mistake people make is to call write_to_exchange() > 1
     # time for every read_from_exchange() response.
