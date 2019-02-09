@@ -1,4 +1,4 @@
-import sample-bot
+import sample_bot
 
 def trade(exchange):
     data = sample-bot.exchange(exchange)
