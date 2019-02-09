@@ -97,7 +97,7 @@ def Bondtrade(exchange):
 def main():
     print(1)
     exchange = connect()
-    print(2)
+    print(exchange)
     data = read_from_exchange(exchange)
     print(3)
 
