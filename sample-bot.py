@@ -62,8 +62,9 @@ def getData(exchange):
 
 def nextOrderID():
     x = 1
-    yield(x)
-    x += 1
+    while True:
+        yield(x)
+        x += 1
 
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
