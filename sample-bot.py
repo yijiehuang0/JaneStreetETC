@@ -41,6 +41,9 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
+def getData(exchange):
+    return exchange.last_data
+
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
@@ -55,10 +58,11 @@ def trade(exchange, buysell, symbol, price, size):
         write_to_exchange(exchange, trade)
 
 def main():
+
+    
     exchange = connect()
-    write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
-    hello_from_exchange = read_from_exchange(exchange)
-    # A common mistake people make is to call write_to_exchange() > 1
+
+        # A common mistake people make is to call write_to_exchange() > 1
     # time for every read_from_exchange() response.
     # Since many write messages generate marketdata, this will cause an
     # exponential explosion in pending messages. Please, don't do that!
