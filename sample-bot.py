@@ -165,7 +165,7 @@ def main():
         trades.extend(FairValuetrade(exchange))
         trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
-        print(fvlist)
+        print(fvList)
         # trades = []
         # print(data)
 
