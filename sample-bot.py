@@ -42,10 +42,8 @@ def write_to_exchange(exchange, obj):
     exchange.write("\n")
 
 def read_from_exchange(e):
+    print("A")
     data = e.readline()
-    # print("a")
-    # return data
-    # print
     if (data == ""):
         print("a")
         return None
