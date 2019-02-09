@@ -82,7 +82,7 @@ def trade_batch(exchange, trades):
             if buysell and size != 0:
                 trade(exchange, buysell, symbol, price, size)
 
-def Bondtrade(exchange):
+def TradeBond(exchange):
     data = read_from_exchange(exchange)
     trades = []
     if data['type'] == 'book' and data['symbol'] == 'BOND':
@@ -100,7 +100,7 @@ def Bondtrade(exchange):
 def updateValues(data, symb):
     buys = data['buy']
     sells = data['sell']
-    print("yes yes yes")
+    print("here we go")
 
     if(len(buys) > 0):
         print(symb)
