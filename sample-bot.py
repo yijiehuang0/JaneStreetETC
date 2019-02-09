@@ -1,10 +1,3 @@
-#!/usr/bin/python
-
-# ~~~~~==============   HOW TO RUN   ==============~~~~~
-# 1) Configure things in CONFIGURATION section
-# 2) Change permissions: chmod +x bot.py
-# 3) Run in loop: while true; do ./bot.py; sleep 1; done
-
 from __future__ import print_function
 
 import sys
@@ -79,7 +72,6 @@ def trade(exchange, buysell, symbol, price, size):
 def trade_batch(exchange, trades):
         # TODO check conflicts
         for buysell, symbol, price, size in trades:
-            print("***v***")
             print(trades)
             print("***^***")
             if buysell and size != 0:
