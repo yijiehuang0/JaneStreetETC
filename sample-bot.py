@@ -31,6 +31,8 @@ prod_exchange_hostname="production"
 port=25000 + (test_exchange_index if test_mode else 0)
 exchange_hostname = "test-exch-" + team_name if test_mode else prod_exchange_hostname
 
+order_id = 1
+position = {"alex" : 1}
 last_data = None
 
 # ~~~~~============== NETWORKING CODE ==============~~~~~
@@ -60,12 +62,6 @@ def read_from_exchange(e):
 def getData(exchange):
     return last_data
 
-def nextOrderID():
-    x = 1
-    while True:
-        yield x
-        x += 1
-
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
@@ -74,7 +70,7 @@ def nextOrderID():
 
 def trade(exchange, buysell, symbol, price, size):
         # order_id = str(datetime.datetime.now()).split(" ")[1].replace(":","").split(".")[0]
-        trade = {'type': 'add', 'order_id': next(iter(nextOrderID())), 'symbol': symbol,
+        trade = {'type': 'add', 'order_id': random.randint(1,100), 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
         print(trade)
         write_to_exchange(exchange, trade)
