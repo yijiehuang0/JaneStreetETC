@@ -28,7 +28,7 @@ prod_exchange_hostname="production"
 port=25000 + (test_exchange_index if test_mode else 0)
 exchange_hostname = "test-exch-" + team_name if test_mode else prod_exchange_hostname
 
-nonlocal order_id = 1
+order_id = 1
 position = {"alex" : 1}
 last_data = None
 
@@ -68,6 +68,7 @@ def getData(exchange):
 def trade(exchange, buysell, symbol, price, size):
         trade = {'type': 'add', 'order_id': order_id, 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
+        nonlocal order_id
         order_id += 1
         print(trade)
         write_to_exchange(exchange, trade)
@@ -93,7 +94,7 @@ def Bondtrade(exchange):
         asks = data['sell']
         for price, size in asks:
             if price < 1000:
-                print("buy")
+                print("bu")
                 trades.append(('BUY', 'BOND', price, size))
     return trades
 
