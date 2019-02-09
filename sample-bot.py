@@ -19,7 +19,7 @@ import random
 team_name="gettingthingsdone"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
-test_mode = True
+test_mode = False
 
 # This setting changes which test exchange is connected to.
 # 0 is prod-like
@@ -81,7 +81,7 @@ def trade_batch(exchange, trades):
             if buysell and size != 0:
                 trade(exchange, buysell, symbol, price, size)
 
-def Bondtrade(exchange):
+def TradeBond(exchange):
     data = read_from_exchange(exchange)
     trades = []
     if data['type'] == 'book' and data['symbol'] == 'BOND':
@@ -99,7 +99,7 @@ def Bondtrade(exchange):
 def updateValues(data, symb):
     buys = data['buy']
     sells = data['sell']
-    print("yes yes yes")
+    print("here we go")
 
     if(len(buys) > 0):
         mean_buy = sum([int(price) for price, size in buys]) / len(buys)
