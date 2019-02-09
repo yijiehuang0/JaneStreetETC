@@ -10,6 +10,7 @@ from __future__ import print_function
 import sys
 import socket
 import json
+import bond_strategy
 
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # replace REPLACEME with your team name!
@@ -56,6 +57,12 @@ def trade(exchange, buysell, symbol, price, size):
         order_id += 1
         print(trade)
         write_to_exchange(exchange, trade)
+def trade_batch(trades):
+        # TODO check conflicts
+        for buysell, symbol, price, size in trades:
+            if buysell and size != 0:
+                trade(buysell, symbol, price, size)
+
 
 def main():
 
@@ -67,9 +74,9 @@ def main():
 
 
     while data:
-        trades.extend(strategy.trade(self.exchange))
-        self.exchange.trade_batch(trades)
-        data = self.exchange.read()
+        trades.extend(bond_strategy.trade(exchange))
+        exchange.tradeMany(trades)
+        data = exchange.read()
 
         # A common mistake people make is to call write_to_exchange() > 1
     # time for every read_from_exchange() response.
