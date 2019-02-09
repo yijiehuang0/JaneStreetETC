@@ -61,7 +61,7 @@ def getData(exchange):
     return last_data
 
 def nextOrderID():
-    int x = 1
+    x = 1
     yield(x)
     x += 1
 
