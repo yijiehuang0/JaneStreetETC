@@ -28,7 +28,7 @@ test_mode = False
 test_exchange_index=0
 prod_exchange_hostname="production"
 
-port=25000 + (test_exchange_index if test_mode else 0)
+port=2500 + (test_exchange_index if test_mode else 0)
 exchange_hostname = "test-exch-" + team_name if test_mode else prod_exchange_hostname
 
 order_id = 1
