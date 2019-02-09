@@ -56,6 +56,7 @@ def trade(exchange, buysell, symbol, price, size):
         order_id += 1
         print(trade)
         write_to_exchange(exchange, trade)
+
 def trade_batch(trades):
         # TODO check conflicts
         for buysell, symbol, price, size in trades:
@@ -63,7 +64,7 @@ def trade_batch(trades):
                 trade(buysell, symbol, price, size)
 
 def Bondtrade(exchange):
-    data = sample-bot.exchange(exchange)
+    data = getData(exchange)
     trades = []
     if data['type'] == 'book' and data['symbol'] == 'BOND':
         bids = data['buy']
