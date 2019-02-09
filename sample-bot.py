@@ -103,12 +103,15 @@ def updateValues(data, symb):
     print("yes yes yes")
 
     if(len(buys) > 0):
+        print(symb)
         mean_buy = sum([int(price) for price, size in buys]) / len(buys)
         if(fvList[symb][0] == None):
             fvList[symb][0] = mean_buy
         else:
             fvList[symb][0] = (fvList[symb][0] + mean_buy)/2
     if(len(sells) > 0):
+        print(symb)
+
         mean_sell = sum([int(price) for price, size in sells])/ len(sells)
         if(fvList[symb][1] == None):
             fvList[symb][1] = mean_sell
