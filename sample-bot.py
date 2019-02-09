@@ -103,14 +103,12 @@ def updateValues(data, symb):
     print("here we go")
 
     if(len(buys) > 0):
-        print(symb)
         mean_buy = sum([int(price) for price, size in buys]) / len(buys)
         if(fvList[symb][0] == None):
             fvList[symb][0] = mean_buy
         else:
             fvList[symb][0] = (fvList[symb][0] + mean_buy)/2
     if(len(sells) > 0):
-        print(symb)
 
         mean_sell = sum([int(price) for price, size in sells])/ len(sells)
         if(fvList[symb][1] == None):
@@ -132,11 +130,12 @@ def FairValuetrade(exchange):
     updateValues(data, symb)
     if(fv[0] == None or fv[1] == None):
         return trades
-    print(fv)
 
     fv = fvList[symb]
     fv = sum(fv)/2
     diff = fv / 200
+    print(data['buy'])
+    print(symb)
 
     for entry in data['buy']:
         if(int(entry[0]) > fv + diff):
