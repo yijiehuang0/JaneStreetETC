@@ -115,8 +115,8 @@ def main():
 
     while data:
         trades.extend(Bondtrade(exchange))
-        exchange.tradeMany(trades)
-        data = exchange.read()
+        tradeMany(trades)
+        data = read_from_exchange(exchange)
         print(data)
 
         # A common mistake people make is to call write_to_exchange() > 1
