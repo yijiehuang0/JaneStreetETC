@@ -148,9 +148,9 @@ def FairValuetrade(exchange):
         if(int(entry[0]) < fv - diff):
             trades.append(['BUY', symb, entry[0], entry[1]])
             print("yapoo")
-    print("#################################################################")
+    print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
     print(trades)
-    print("#################################################################")
+    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
     return trades
 
 
