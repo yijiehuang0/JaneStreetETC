@@ -143,9 +143,11 @@ def FairValuetrade(exchange):
     for entry in data['buy']:
         if(int(entry[0]) > fv + diff):
             trades.append(['SELL', symb, entry[0], entry[1]])
+            print("wahoo")
     for entry in data['sell']:
         if(int(entry[0]) < fv - diff):
             trades.append(['BUY', symb, entry[0], entry[1]])
+            print("yapoo")
     print("#################################################################")
     print(trades)
     print("#################################################################")
