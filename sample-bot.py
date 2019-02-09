@@ -79,6 +79,8 @@ def trade(exchange, buysell, symbol, price, size):
 def trade_batch(exchange, trades):
         # TODO check conflicts
         for buysell, symbol, price, size in trades:
+            print(trades)
+            print("***^***")
             if buysell and size != 0:
                 trade(exchange, buysell, symbol, price, size)
 
@@ -100,7 +102,6 @@ def TradeBond(exchange):
 def updateValues(data, symb):
     buys = data['buy']
     sells = data['sell']
-    print("here we go")
 
     if(len(buys) > 0):
         mean_buy = sum([int(price) for price, size in buys]) / len(buys)
@@ -148,9 +149,9 @@ def FairValuetrade(exchange):
         if(int(entry[0]) < fv - diff):
             trades.append(['BUY', symb, entry[0], entry[1]])
             print("yapoo")
-    print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+    print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
     print(trades)
-    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
     return trades
 
 
