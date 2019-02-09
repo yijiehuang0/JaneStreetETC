@@ -10,7 +10,6 @@ from __future__ import print_function
 import sys
 import socket
 import json
-import bond_strategy
 
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # replace REPLACEME with your team name!
@@ -63,6 +62,21 @@ def trade_batch(trades):
             if buysell and size != 0:
                 trade(buysell, symbol, price, size)
 
+def Bondtrade(exchange):
+    data = sample-bot.exchange(exchange)
+    trades = []
+    if data['type'] == 'book' and data['symbol'] == 'BOND':
+        bids = data['buy']
+        for price, size in bids:
+            if price > 1000:
+                trades.append(('SELL', 'BOND', price, size))
+
+        asks = data['sell']
+        for price, size in asks:
+            if price < 1000:
+                trades.append(('BUY', 'BOND', price, size))
+    return trades
+
 
 def main():
 
@@ -74,7 +88,7 @@ def main():
 
 
     while data:
-        trades.extend(bond_strategy.trade(exchange))
+        trades.extend(Bondtrade(exchange))
         exchange.tradeMany(trades)
         data = exchange.read()
 
