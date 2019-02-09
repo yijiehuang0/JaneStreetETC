@@ -160,11 +160,12 @@ def main():
     trades = []
 
     while data:
-        # trades.extend(Bondtrade(exchange))
+        trades.extend(Bondtrade(exchange))
 
         trades.extend(FairValuetrade(exchange))
         trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
+
         # trades = []
         # print(data)
 
