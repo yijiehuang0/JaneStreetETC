@@ -178,7 +178,7 @@ def main():
         data = read_from_exchange(exchange)
         print(fvList)
         # trades = []
-        # print(data)
+        print(data)
 
 
         # A common mistake people make is to call write_to_exchange() > 1
