@@ -16,7 +16,7 @@ import json
 team_name="REPLACEME"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
-test_mode = False
+test_mode = True
 
 # This setting changes which test exchange is connected to.
 # 0 is prod-like
@@ -41,8 +41,8 @@ def write_to_exchange(exchange, obj):
     json.dump(obj, exchange)
     exchange.write("\n")
 
-def read_from_exchange(exchange):
-    data = exchange.readLine()
+def read_from_exchange(e):
+    data = e.readLine()
     if (data == ""):
         return None
     else:
