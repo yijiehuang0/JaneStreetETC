@@ -132,6 +132,7 @@ def FairValuetrade(exchange):
     updateValues(data, symb)
     if(fv[0] == None or fv[1] == None):
         return trades
+    print(fv)
 
     fv = fvList[symb]
     fv = sum(fv)/2
