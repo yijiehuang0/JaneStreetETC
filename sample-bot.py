@@ -79,6 +79,7 @@ def trade(exchange, buysell, symbol, price, size):
 def trade_batch(exchange, trades):
         # TODO check conflicts
         for buysell, symbol, price, size in trades:
+            print("***v***")
             print(trades)
             print("***^***")
             if buysell and size != 0:
