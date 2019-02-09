@@ -29,6 +29,7 @@ port=25000 + (test_exchange_index if test_mode else 0)
 exchange_hostname = "test-exch-" + team_name if test_mode else prod_exchange_hostname
 
 position = {"alex" : 1}
+last_data = None
 
 # ~~~~~============== NETWORKING CODE ==============~~~~~
 def connect():
@@ -41,10 +42,16 @@ def write_to_exchange(exchange, obj):
     exchange.write("\n")
 
 def read_from_exchange(exchange):
-    return json.loads(exchange.readline())
+    data = exchange.readLine()
+    if (data == ""):
+        return None
+    else:
+        data = json.loads(data)
+        last_data = data
+        return data
 
 def getData(exchange):
-    return exchange.last_data
+    return last_data
 
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
@@ -88,18 +95,20 @@ def Bondtrade(exchange):
 
 
 def main():
-
-
+    print(1)
     exchange = connect()
+    print(2)
     data = read_from_exchange(exchange)
+    print(3)
 
     trades = []
+    print(data)
 
     while data:
         trades.extend(Bondtrade(exchange))
         exchange.tradeMany(trades)
         data = exchange.read()
-        print(position)
+        print(data)
 
         # A common mistake people make is to call write_to_exchange() > 1
     # time for every read_from_exchange() response.
