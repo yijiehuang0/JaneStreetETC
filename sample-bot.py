@@ -66,7 +66,7 @@ def getData(exchange):
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
 
-fvList = {"BOND": [None,None], "VALE": [None,None] "VALBZ": [None,None], "GS": [None,None], "MS": [None,None], "WFC": [None,None], "XLF": [None,None]}
+fvList = {"BOND": [None,None], "VALE": [None,None], "VALBZ": [None,None], "GS": [None,None], "MS": [None,None], "WFC": [None,None], "XLF": [None,None]}
 
 def trade(exchange, buysell, symbol, price, size):
         # order_id = str(datetime.datetime.now()).split(" ")[1].replace(":","").split(".")[0]
