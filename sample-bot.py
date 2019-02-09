@@ -42,7 +42,7 @@ def write_to_exchange(exchange, obj):
     exchange.write("\n")
 
 def read_from_exchange(e):
-    data = e.readLine()
+    data = e.readline()
     if (data == ""):
         return None
     else:
