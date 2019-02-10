@@ -183,9 +183,7 @@ def main():
 
     while data:
         trades.extend(TradeBond(exchange))
-        #trades.extend(buyNormalStocks(exchange))
-
-
+        trades.extend(buyNormalStocks(exchange))
         trades.extend(FairValuetrade(exchange))
         trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
