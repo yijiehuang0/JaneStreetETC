@@ -176,9 +176,6 @@ def buyNormalStocks(exchange):
     return trades
 
 
-def tradeADR(exchange):
-
-
 
 
 
