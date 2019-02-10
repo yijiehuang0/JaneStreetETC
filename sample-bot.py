@@ -151,7 +151,7 @@ def buyNormalStocks(exchange):
     data = read_from_exchange(exchange)
     sym = data['symbol']
     trades = []
-    if data['type'] == 'book' and data['symbol'] == 'GS' or data['symbol'] == 'MS':
+    if (data['type'] == 'book') and (data['symbol'] == 'GS' or data['symbol'] == 'MS'):
         bids = data['buy']
 
         for price, size in bids:
