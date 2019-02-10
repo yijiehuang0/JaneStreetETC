@@ -162,7 +162,7 @@ def buyNormalStocks(exchange):
                 fv = fvList[sym][0]
 
                 if(fv):
-                    if price > fvList[sym][0]:
+                    if price < fvList[sym][0]:
                         trades.append(('SELL', sym, price, size))
 
 
@@ -171,7 +171,7 @@ def buyNormalStocks(exchange):
             for price, size in asks:
                 fv = fvList[sym][0]
                 if(fv):
-                    if price < fvList[sym][0]:
+                    if price > fvList[sym][0]:
                         trades.append(('BUY', sym, price, size))
     return trades
 
