@@ -182,8 +182,8 @@ def main():
     trades = []
 
     while data:
-        #trades.extend(TradeBond(exchange))
-        trades.extend(buyNormalStocks(exchange))
+        trades.extend(TradeBond(exchange))
+        #trades.extend(buyNormalStocks(exchange))
 
 
         trades.extend(FairValuetrade(exchange))
