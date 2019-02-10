@@ -131,9 +131,6 @@ def FairValuetrade(exchange):
 
     print(symb)
 
-
-
-
     for entry in data['buy']:
         if(int(entry[0]) > fv + diff):
             trades.append(['SELL', symb, entry[0], entry[1]])
@@ -207,8 +204,9 @@ def main():
     trades = []
 
     while data:
-        trades.extend(TradeBond(exchange))
         trades.extend(FairValuetrade(exchange))
+        trades.extend(TradeBond(exchange))
+
         trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
         print(fvList)
