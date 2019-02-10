@@ -12,7 +12,7 @@ import random
 team_name="gettingthingsdone"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
-test_mode = False
+test_mode = True
 
 # This setting changes which test exchange is connected to.
 # 0 is prod-like
@@ -194,8 +194,8 @@ def main():
 
     while data:
         trades.extend(TradeBond(exchange))
-        trades.extend(buyNormalStocks(exchange))
         trades.extend(FairValuetrade(exchange))
+        trades.extend(buyNormalStocks(exchange))
         trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
         print(fvList)
