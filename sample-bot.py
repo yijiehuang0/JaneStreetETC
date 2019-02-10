@@ -65,7 +65,7 @@ def trade(exchange, buysell, symbol, price, size):
         # order_id = str(datetime.datetime.now()).split(" ")[1].replace(":","").split(".")[0]
         trade = {'type': 'add', 'order_id': random.randint(1,100), 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
-        print(trade)
+        sleep(.01)
         write_to_exchange(exchange, trade)
         # time.sleep(0.01)
 
@@ -174,6 +174,11 @@ def buyNormalStocks(exchange):
                     if price < fvList[sym][0]:
                         trades.append(('BUY', sym, price, size))
     return trades
+
+
+def tradeADR(exchange):
+
+
 
 
 
