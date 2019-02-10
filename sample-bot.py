@@ -152,7 +152,7 @@ def buyNormalStocks(exchange):
     sym = data['symbol']
     trades = []
     if data['type'] == 'book' and data['symbol'] == 'GS' or data['symbol'] == 'MS':
-        bids = data['buy']
+        bids = data.get("buy",null)
 
         for price, size in bids:
             if price > fvList[sym][0]:
