@@ -65,7 +65,7 @@ def trade(exchange, buysell, symbol, price, size):
         # order_id = str(datetime.datetime.now()).split(" ")[1].replace(":","").split(".")[0]
         trade = {'type': 'add', 'order_id': random.randint(1,100), 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
-        time.sleep(.01)
+        print(trade)
         write_to_exchange(exchange, trade)
         # time.sleep(0.01)
 
@@ -131,6 +131,9 @@ def FairValuetrade(exchange):
 
     print(symb)
 
+
+
+
     for entry in data['buy']:
         if(int(entry[0]) > fv + diff):
             trades.append(['SELL', symb, entry[0], entry[1]])
@@ -152,7 +155,7 @@ def buyNormalStocks(exchange):
     trades = []
 
     if (('buy' in data.keys() or 'sell' in data.keys())):
-        if (data['type'] == 'book') and (data['symbol'] == 'GS' or data['symbol'] == 'MS'):
+        if (data['type'] == 'book') and (data['symbol'] == 'GS' or data['symbol'] == 'MS' or data['symbol'] == 'WFC' or data['symbol'] == 'XLF' or data['symbol'] == 'VALE' ):
             bids = data['buy']
 
             for price, size in bids:
@@ -172,20 +175,6 @@ def buyNormalStocks(exchange):
                         trades.append(('BUY', sym, price, size))
     return trades
 
-def adrTrader(exchange):
-    if('symbol' in data.keys()):
-        sym = data['symbol']
-    trades = []
-
-    if (('buy' in data.keys() or 'sell' in data.keys())):
-        if (data['type'] == 'book') and (data['symbol'] == 'GS' or data['symbol'] == 'MS'):
-            bids = data['buy']
-
-
-    return 4
-
-
-
 
 
 
@@ -204,9 +193,9 @@ def main():
     trades = []
 
     while data:
-        trades.extend(FairValuetrade(exchange))
         trades.extend(TradeBond(exchange))
-
+        trades.extend(FairValuetrade(exchange))
+        trades.extend(buyNormalStocks(exchange))
         trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
         print(fvList)
@@ -221,4 +210,3 @@ def main():
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
 if __name__ == "__main__":
-    main()
