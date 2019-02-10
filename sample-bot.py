@@ -151,24 +151,26 @@ def buyNormalStocks(exchange):
     data = read_from_exchange(exchange)
     sym = data['symbol']
     trades = []
-    if (data['type'] == 'book') and (data['symbol'] == 'GS' or data['symbol'] == 'MS'):
-        bids = data['buy']
 
-        for price, size in bids:
-            fv = fvList[sym][0]
+    if ('symbol' in data.keys()) and ('buy' in data.keys() or 'sell' in data.keys()):
+        if (data['type'] == 'book') and (data['symbol'] == 'GS' or data['symbol'] == 'MS'):
+            bids = data['buy']
 
-            if(fv):
-                if price > fvList[sym][0]:
-                    trades.append(('SELL', sym, price, size))
+            for price, size in bids:
+                fv = fvList[sym][0]
+
+                if(fv):
+                    if price > fvList[sym][0]:
+                        trades.append(('SELL', sym, price, size))
 
 
 
-        asks = data['sell']
-        for price, size in asks:
-            fv = fvList[sym][0]
-            if(fv):
-                if price < fvList[sym][0]:
-                    trades.append(('BUY', sym, price, size))
+            asks = data['sell']
+            for price, size in asks:
+                fv = fvList[sym][0]
+                if(fv):
+                    if price < fvList[sym][0]:
+                        trades.append(('BUY', sym, price, size))
     return trades
 
 
