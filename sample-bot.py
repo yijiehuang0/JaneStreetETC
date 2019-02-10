@@ -12,7 +12,7 @@ import random
 team_name="gettingthingsdone"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
-test_mode = True
+test_mode = False
 
 # This setting changes which test exchange is connected to.
 # 0 is prod-like
@@ -154,7 +154,7 @@ def buyNormalStocks(exchange):
         sym = data['symbol']
     trades = []
 
-    if (('symbol' in data.keys()) and ('buy' in data.keys() or 'sell' in data.keys())):
+    if (('buy' in data.keys() or 'sell' in data.keys())):
         if (data['type'] == 'book') and (data['symbol'] == 'GS' or data['symbol'] == 'MS'):
             bids = data['buy']
 
