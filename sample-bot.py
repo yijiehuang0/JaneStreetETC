@@ -147,22 +147,22 @@ def FairValuetrade(exchange):
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
     return trades
 
-def buyNormalStocks(exchange):
-    data = read_from_exchange(exchange)
-    sym = data['symbol']
-    trades = []
-    if data['type'] == 'book' and data['symbol'] == 'GS' or data['symbol'] == 'MS':
-        bids = data.get("buy",null)
+# def buyNormalStocks(exchange):
+#     data = read_from_exchange(exchange)
+#     sym = data['symbol']
+#     trades = []
+#     if data['type'] == 'book' and data['symbol'] == 'GS' or data['symbol'] == 'MS':
+#         bids = data.get("buy",null)
 
-        for price, size in bids:
-            if price > fvList[sym][0]:
-                trades.append(('SELL', sym, price, size))
+#         for price, size in bids:
+#             if price > fvList[sym][0]:
+#                 trades.append(('SELL', sym, price, size))
 
-        asks = data['sell']
-        for price, size in asks:
-            if price < fvList[sym][0]:
-                trades.append(('BUY', sym, price, size))
-    return trades
+#         asks = data['sell']
+#         for price, size in asks:
+#             if price < fvList[sym][0]:
+#                 trades.append(('BUY', sym, price, size))
+#     return trades
 
 
 
@@ -182,7 +182,7 @@ def main():
     trades = []
 
     while data:
-        trades.extend(TradeBond(exchange))
+        #trades.extend(TradeBond(exchange))
         trades.extend(buyNormalStocks(exchange))
 
 
