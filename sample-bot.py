@@ -175,6 +175,18 @@ def buyNormalStocks(exchange):
                         trades.append(('BUY', sym, price, size))
     return trades
 
+def adrTrader(exchange):
+    if('symbol' in data.keys()):
+        sym = data['symbol']
+    trades = []
+
+    if (('buy' in data.keys() or 'sell' in data.keys())):
+        if (data['type'] == 'book') and (data['symbol'] == 'GS' or data['symbol'] == 'MS'):
+            bids = data['buy']
+
+
+    return 4
+
 
 
 
@@ -197,7 +209,6 @@ def main():
     while data:
         trades.extend(TradeBond(exchange))
         trades.extend(FairValuetrade(exchange))
-        trades.extend(buyNormalStocks(exchange))
         trade_batch(exchange,trades)
         data = read_from_exchange(exchange)
         print(fvList)
